@@ -66,8 +66,6 @@ public:
      */
     Layer(TypeFlag type, const QString &name, int x, int y);
 
-    Layer(TypeFlag type, const QString &name, int x, int y,int width, int height);
-
     /**
      * Returns the type of this layer.
      */
@@ -153,29 +151,6 @@ public:
     void setPosition(QPoint pos) { setPosition(pos.x(), pos.y()); }
     void setPosition(int x, int y) { mX = x; mY = y; }
 
-    /**
-     * Returns the width of this layer.
-     */
-    int width() const { return mWidth; }
-
-    /**
-     * Returns the height of this layer.
-     */
-    int height() const { return mHeight; }
-
-    /**
-     * Returns the size of this layer.
-     */
-    QSize size() const { return QSize(mWidth, mHeight); }
-
-    void setSize(const QSize &size);
-
-    /**
-     * Returns the bounds of this layer.
-     */
-QRect bounds() const { return QRect(mX, mY, mWidth, mHeight); }
-
-
     void setOffset(const QPointF &offset);
     QPointF offset() const;
 
@@ -247,8 +222,6 @@ protected:
     TypeFlag mLayerType;
     int mX;
     int mY;
-    int mWidth;
-    int mHeight;
     QPointF mOffset;
     float mOpacity;
     bool mVisible;
@@ -258,14 +231,6 @@ protected:
     friend class Map;
     friend class GroupLayer;
 };
-/**
- * Sets the size of this layer.
- */
-inline void Layer::setSize(const QSize &size)
-{
-    mWidth = size.width();
-    mHeight = size.height();
-}
 
 
 /**
